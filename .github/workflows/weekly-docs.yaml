@@ -15,6 +15,7 @@ permissions:
 
 jobs:
   check-docs:
+    if: github.repository == 'coder/coder'
     # later versions of Ubuntu have disabled unprivileged user namespaces, which are required by the action
     runs-on: ubuntu-22.04
     permissions:

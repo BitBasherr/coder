@@ -22,7 +22,7 @@ permissions:
 
 jobs:
   build_image:
-    if: github.actor != 'dependabot[bot]' # Skip Dependabot PRs
+    if: github.repository == 'coder/coder' && github.actor != 'dependabot[bot]'
     runs-on: ${{ github.repository_owner == 'coder' && 'depot-ubuntu-22.04-4' || 'ubuntu-latest' }}
     steps:
       - name: Harden Runner

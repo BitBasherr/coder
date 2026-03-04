@@ -12,6 +12,7 @@ permissions:
 
 jobs:
   test-go-pg:
+    if: github.repository == 'coder/coder'
     # make sure to adjust NUM_PARALLEL_PACKAGES and NUM_PARALLEL_TESTS below
     # when changing runner sizes
     runs-on: ${{ matrix.os == 'macos-latest' && github.repository_owner == 'coder' && 'depot-macos-latest' || matrix.os == 'windows-2022' && github.repository_owner == 'coder' && 'depot-windows-2022-16' || matrix.os }}
@@ -138,7 +139,7 @@ jobs:
     needs:
       - test-go-pg
     runs-on: ubuntu-latest
-    if: failure()
+    if: github.repository == 'coder/coder' && failure()
 
     steps:
       - name: Send Slack notification

@@ -24,6 +24,7 @@ jobs:
     name: AI Severity Classification
     runs-on: ubuntu-latest
     if: |
+      github.repository == 'coder/coder' &&
       (github.event.label.name == 'triage-check' || github.event_name == 'workflow_dispatch')
     timeout-minutes: 30
     env:
