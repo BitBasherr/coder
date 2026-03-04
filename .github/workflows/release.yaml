@@ -34,6 +34,7 @@ env:
 jobs:
   # Only allow maintainers/admins to release.
   check-perms:
+    if: github.repository == 'coder/coder'
     runs-on: ${{ github.repository_owner == 'coder' && 'depot-ubuntu-22.04-8' || 'ubuntu-latest' }}
     steps:
       - name: Allow only maintainers/admins

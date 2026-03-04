@@ -10,6 +10,7 @@ permissions:
 
 jobs:
   issues:
+    if: github.repository == 'coder/coder'
     runs-on: ubuntu-latest
     permissions:
       # Needed to close issues.
@@ -90,6 +91,7 @@ jobs:
             }
 
   branches:
+    if: github.repository == 'coder/coder'
     runs-on: ubuntu-latest
     permissions:
       # Needed to delete branches.
@@ -114,6 +116,7 @@ jobs:
           # extra_protected_branch_regex: ^(foo|bar)$
           exclude_open_pr_branches: true
   del_runs:
+    if: github.repository == 'coder/coder'
     runs-on: ubuntu-latest
     permissions:
       # Needed to delete workflow runs.

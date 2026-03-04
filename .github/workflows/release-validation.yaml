@@ -10,6 +10,7 @@ permissions:
 
 jobs:
   network-performance:
+    if: github.repository == 'coder/coder'
     runs-on: ubuntu-latest
 
     steps:

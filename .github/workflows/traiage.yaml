@@ -30,7 +30,7 @@ jobs:
   traiage:
     name: Triage GitHub Issue with Claude Code
     runs-on: ubuntu-latest
-    if: github.event.label.name == 'traiage' || github.event_name == 'workflow_dispatch'
+    if: github.repository == 'coder/coder' && (github.event.label.name == 'traiage' || github.event_name == 'workflow_dispatch')
     timeout-minutes: 30
     env:
       CODER_URL: ${{ secrets.TRAIAGE_CODER_URL }}

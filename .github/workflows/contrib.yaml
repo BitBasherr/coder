@@ -24,6 +24,7 @@ concurrency: pr-${{ github.ref }}
 
 jobs:
   cla:
+    if: github.repository == 'coder/coder'
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
@@ -50,7 +51,7 @@ jobs:
     permissions:
       pull-requests: write
     # Skip tagging for draft PRs.
-    if: ${{ github.event_name == 'pull_request_target' && !github.event.pull_request.draft }}
+    if: github.repository == 'coder/coder' && github.event_name == 'pull_request_target' && !github.event.pull_request.draft
     steps:
       - name: release-labels
         uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8.0.0

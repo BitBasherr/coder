@@ -12,6 +12,7 @@ permissions:
 
 jobs:
   assign-author:
+    if: github.repository == 'coder/coder'
     runs-on: ubuntu-latest
     steps:
       - name: Harden Runner

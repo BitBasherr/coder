@@ -34,6 +34,7 @@ permissions:
 
 jobs:
   check_pr:
+    if: github.repository == 'coder/coder'
     runs-on: ubuntu-latest
     outputs:
       PR_OPEN: ${{ steps.check_pr.outputs.pr_open }}
@@ -275,6 +276,7 @@ jobs:
     needs: [build, get_info]
     # Run deploy job only if build job was successful or skipped
     if: |
+      github.repository == 'coder/coder' &&
       always() && (needs.build.result == 'success' || needs.build.result == 'skipped') &&
       (needs.get_info.outputs.BUILD == 'true' || github.event.inputs.deploy == 'true')
     runs-on: "ubuntu-latest"
